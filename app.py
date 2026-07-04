@@ -1,22 +1,29 @@
 from src.loader import load_pdf
+from src.chunker import chunk_text
 
 
 PDF_PATH = "data/sample.pdf"
 
-text, total_pages = load_pdf(PDF_PATH)
+text, pages = load_pdf(PDF_PATH)
 
-print("=" * 60)
+chunks = chunk_text(text)
 
-print(f"Pages: {total_pages}")
+print(f"Pages: {pages}")
 
 print(f"Characters: {len(text)}")
 
-print()
-
-print("Preview:\n")
-
-print(text[:1000])
+print(f"Total Chunks: {len(chunks)}")
 
 print()
 
-print("=" * 60)
+for i, chunk in enumerate(chunks[:3]):
+
+    print("=" * 60)
+
+    print(f"Chunk {i+1}")
+
+    print("=" * 60)
+
+    print(chunk)
+
+    print()
