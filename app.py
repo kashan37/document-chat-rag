@@ -8,7 +8,7 @@ favicon_path = Path("assets/favicon.png")
 page_icon = str(favicon_path) if favicon_path.exists() else "📄"
 
 st.set_page_config(
-    page_title="Document Chat - AI Assistant",
+    page_title="Contexta - AI Assistant",
     page_icon=page_icon,
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -42,7 +42,7 @@ st.markdown("""
     <div class="header-content">
         <div class="logo-section">
             <span class="logo-icon">✦</span>
-            <span class="logo-text">Document Chat</span>
+            <span class="logo-text">Contexta</span>
         </div>
         <div class="header-badge">
             <span class="badge-dot"></span>
@@ -55,10 +55,10 @@ st.markdown("""
 # ---------- Info Banner (persistent, compact — replaces the old giant hero) ----------
 if st.session_state.document_loaded:
     banner_icon = "✅"
-    banner_text = f"<b>{st.session_state.file_name}</b>  is loaded — ask anything below, answers are grounded only in this document."
+    banner_text = f'<span class="file-chip">{st.session_state.file_name}</span> is loaded — Ask questions naturally. Context is preserved across the conversation, so follow ups like "tell me more" work seamlessly.'
 else:
     banner_icon = "📄"
-    banner_text = "Upload a PDF on the left, then ask anything about it — instant, grounded answers only from your document."
+    banner_text = "Upload a PDF and explore it through context aware conversations powered by AI. Every response is grounded in your document"
 
 st.markdown(f"""
 <div class="info-banner">
@@ -103,7 +103,7 @@ with col_left:
                 progress_bar.empty()
             
             st.session_state.document_loaded = True
-            st.session_state.file_name = uploaded_file.name
+            st.session_state.file_name = uploaded_file.name.strip()
             st.session_state.messages = []
             st.session_state.chat_started = False
             st.rerun()

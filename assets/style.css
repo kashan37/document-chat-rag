@@ -154,6 +154,19 @@ html, body, .stApp {
     font-weight: 600;
 }
 
+.file-chip {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--hairline-strong);
+    color: var(--platinum);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin: 0 2px;
+}
+
 /* ===== HERO SECTION (legacy — no longer used, kept for reference) ===== */
 .hero-section {
     position: relative;
